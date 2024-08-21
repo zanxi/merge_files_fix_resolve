@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1FF0D6E1-87A9-4E8A-94D6-D1DFF8687306}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>AutoMerge</RootNamespace>
+    <AssemblyName>AutoMerge</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="JetBrains.Annotations, Version=11.0.0.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
+      <HintPath>..\packages\JetBrains.Annotations.11.0.0\lib\net20\JetBrains.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.ValueTuple, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.3.1\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="diff\AlignmentKey.cs" />
+    <Compile Include="diff\AlignmentNode.cs" />
+    <Compile Include="diff\Assume.cs" />
+    <Compile Include="diff\BasicInsertDeleteDiffElementAligner.cs" />
+    <Compile Include="diff\BasicReplaceInsertDeleteDiffElementAligner.cs" />
+    <Compile Include="diff\Diff.Static.cs" />
+    <Compile Include="diff\DiffElement.cs" />
+    <Compile Include="diff\DiffOperation.cs" />
+    <Compile Include="diff\DiffOptions.cs" />
+    <Compile Include="diff\DiffSection.cs" />
+    <Compile Include="diff\DiffSectionMergeComparer.cs" />
+    <Compile Include="diff\ElementSimilarity.cs" />
+    <Compile Include="diff\ElementSimilarityAligner.cs" />
+    <Compile Include="diff\GetHashCodeExtension.cs" />
+    <Compile Include="diff\HashcodeOccurance.cs" />
+    <Compile Include="diff\IDiffElementAligner.cs" />
+    <Compile Include="diff\IMergeConflictResolver.cs" />
+    <Compile Include="diff\ListExtensions.cs" />
+    <Compile Include="diff\LongestCommonSubsectionDiff.cs" />
+    <Compile Include="diff\LongestCommonSubsequence.cs" />
+    <Compile Include="diff\Merge.cs" />
+    <Compile Include="diff\Merge.Static.cs" />
+    <Compile Include="diff\MergeConflictException.cs" />
+    <Compile Include="diff\Option.cs" />
+    <Compile Include="diff\ReSharperAnnotations.cs" />
+    <Compile Include="diff\StringSimilarityDiffElementAligner.cs" />
+    <Compile Include="diff\TakeLeftMergeConflictResolver.cs" />
+    <Compile Include="diff\TakeLeftThenRightIfRightDiffersFromLeft.Obsolete.cs" />
+    <Compile Include="diff\TakeLeftThenRightIfRightDiffersFromLeftMergeConflictResolver.cs" />
+    <Compile Include="diff\TakeLeftThenRightMergeConflictResolver.cs" />
+    <Compile Include="diff\TakeRightMergeConflictResolver.cs" />
+    <Compile Include="diff\TakeRightThenLeftIfLeftDiffersFromRightMergeConflictResolver.cs" />
+    <Compile Include="diff\TakeRightThenLeftMergeConflictResolver.cs" />
+    <Compile Include="Ensurances.cs" />
+    <Compile Include="FragmentResolverFactory.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResolverFactory.cs" />
+    <Compile Include="Resolvers\DotNet\VisualStudio\CSharpCodeFileConflictResolver.cs" />
+    <Compile Include="Resolvers\DotNet\VisualStudio\CSharpProjectFileConflictResolver.cs" />
+    <Compile Include="IFileConflictResolver.cs" />
+    <Compile Include="FileResolverFactory.cs" />
+    <Compile Include="IFileRelatedConflictResolver.cs" />
+    <Compile Include="IFragmentConflictResolver.cs" />
+    <Compile Include="Resolvers\DotNet\VisualStudio\Fragments\CSharpUsingStatementsInTheSamePlaceFragmentConflictResolver.cs" />
+    <Compile Include="Resolvers\MethodResolver.cs" />
+    <Compile Include="Resolvers\MethodResolverDelegate.cs" />
+    <Compile Include="Resolvers\TextBasedFileConflictResolver.cs" />
+    <Compile Include="Resolvers\TextFileFileConflictResolver.cs" />
+    <Compile Include="Resolvers\TextFragmentBasedFileConflictResolver.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
